@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --bg: #e8e9f0;
+  --card: #f0f1f7;
+  --orange: #f04e13;
+  --dark: #38394a;
+  --mid: #6c6d7d;
+  --muted: #9899a8;
+  --border: rgba(80,90,160,0.13);
+  --border-strong: rgba(80,90,160,0.22);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px;
+  height: 60px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-weight: 700; font-size: 14px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark); text-decoration: none;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+
+/* ── SECTION RULE (PDF header style) ────── */
+.sec-rule {
+  display: flex; align-items: center; gap: 20px;
+  margin-bottom: 56px;
+}
+.sec-rule-label {
+  font-weight: 700; font-size: 18px;
+  letter-spacing: 0.04em; color: var(--orange);
+  white-space: nowrap; font-family: 'DM Sans', sans-serif;
+}
+.sec-rule-line { flex: 1; height: 1.5px; background: var(--orange); opacity: 0.65; }
+
+/* ── SECTION FOOTER (PDF page number) ───── */
+.sec-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 72px;
+  padding-top: 0;
+  border-top: 1.5px solid rgba(240,78,19,0.5);
+}
+.sec-foot-bar { width: 110px; height: 0; }
+.sec-foot-label {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--orange); text-transform: lowercase; font-style: italic;
+}
+.sec-foot-num {
+  font-size: 13px; font-weight: 300; color: var(--orange); letter-spacing: 0.04em;
+}
+
+/* ── ANIMATIONS ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ── PILL TAGS ───────────────────────────── */
+.tag {
+  display: inline-block;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 13px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* ── LARGE ITALIC DISPLAY ────────────────── */
+.display {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+}
+
+/* ── MEDIA ───────────────────────────────── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 20px; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+}

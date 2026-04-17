@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flow — Reuben Sims</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.cs-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
+.cs-hero {
+  min-height: 92vh; display: flex; align-items: flex-end;
+  padding: 0 52px 64px; position: relative; overflow: hidden;
+  background: linear-gradient(140deg, #0e0c14 0%, #180e20 100%);
+}
+.cs-hero-bg-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(160px, 24vw, 320px);
+  font-weight: 400; color: rgba(255,255,255,0.03);
+  white-space: nowrap; pointer-events: none; user-select: none;
+  letter-spacing: -0.04em;
+}
+.cs-hero-content { position: relative; max-width: 640px; }
+.cs-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.cs-proj-label::before { content: ''; width: 28px; height: 1.5px; background: var(--orange); }
+.cs-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(52px, 7vw, 88px); line-height: 1; color: rgba(232,233,240,0.95); margin-bottom: 8px; }
+.cs-hero h1 em { font-style: italic; color: var(--orange); }
+.cs-hero-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px; }
+.cs-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(232,233,240,0.4); }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 24px 52px; transition: color 0.2s; }
+.back-link:hover { color: var(--orange); }
+.cs-overview { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 72px; }
+.cs-overview-cell { background: var(--card); padding: 24px 28px; }
+.cs-overview-cell-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.cs-overview-cell-val { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.5; }
+.cs-section { margin-bottom: 80px; }
+.cs-section-rule { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.cs-section-rule span { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+.cs-section-rule hr { flex: 1; border: none; border-top: 1.5px solid rgba(240,78,19,0.4); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.img-ph { border-radius: 12px; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--muted); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; padding: 20px; }
+.img-ph svg { opacity: 0.3; }
+.img-ph.wide { aspect-ratio: 16/9; }
+.img-ph.sq { aspect-ratio: 1; }
+.cs-quote { border-left: 3px solid var(--orange); padding: 12px 24px; margin: 8px 0; }
+.cs-quote p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--dark); line-height: 1.45; }
+.cs-quote cite { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); font-style: normal; margin-top: 10px; display: block; }
+.insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+.insight-card h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.insight-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
+.cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+.cs-h3-italic { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
+.dark-callout { background: var(--dark); border-radius: 14px; padding: 36px 40px; }
+.dark-callout p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
+.dark-callout p em { color: var(--orange); font-style: normal; }
+.next-proj { display: flex; align-items: center; justify-content: space-between; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 36px; text-decoration: none; color: inherit; transition: transform 0.25s, box-shadow 0.25s; }
+.next-proj:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(40,40,80,0.1); }
+.next-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+.next-proj-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.next-proj-arrow { font-size: 32px; color: var(--orange); }
+@media (max-width: 860px) { .cs-wrap { padding: 0 24px 80px; } .cs-hero { padding: 0 24px 48px; } .back-link { padding: 20px 24px; } .cs-overview { grid-template-columns: 1fr 1fr; } .two-col { grid-template-columns: 1fr; } .three-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Reuben Sims</a>
+  <ul class="nav-links">
+    <li><a href="index.html#cv">CV</a></li>
+    <li><a href="index.html#projects" class="active">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-bg-text">FLOW</div>
+  <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
+    <div class="cs-proj-label">Project 03</div>
+    <h1>Fl<em>o</em>w</h1>
+    <p class="cs-hero-tagline">Whirlpool lamp.</p>
+    <div class="cs-hero-meta">
+      <span>3-week timeline</span>
+      <span>Arduino prototype</span>
+      <span>Creative Prototyping unit</span>
+    </div>
+  </div>
+</div>
+
+<a class="back-link" href="index.html">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Back to projects
+</a>
+
+<div class="cs-wrap">
+
+  <div class="cs-overview reveal">
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Discipline</div><div class="cs-overview-cell-val">Product Design<br>Electronics</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Timeline</div><div class="cs-overview-cell-val">3 weeks<br>2024</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Tools</div><div class="cs-overview-cell-val">Fusion 360<br>Blender, Arduino IDE</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Methods</div><div class="cs-overview-cell-val">Rapid Prototyping<br>Material Exploration</div></div>
+  </div>
+
+  <!-- BRIEF -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>The Challenge</span><hr></div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3">Represent time using a sensor and a moving part.</p>
+        <p class="cs-p">The brief for assessment 2 of Creative Prototyping was deliberately open: represent time using a sensor and some kind of moving part. The result had to be functional, physical, and meaningful.</p>
+      </div>
+      <div class="dark-callout">
+        <p>If I imagined time as a material, I would say it's closest to <em>water.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Concept</span><hr></div>
+    <div class="cs-quote" style="margin-bottom:36px;">
+      <p>Time is violent under pressure, evaporates when you aren't looking, slows to a trickle when you are bored, and you'll drown in it if you're not careful.</p>
+      <cite>— Reuben Sims, project notes</cite>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3-italic">The whirlpool idea</p>
+        <p class="cs-p">The rough plan was a dish of water that responds to an observer — slowing and speeding up, becoming tumultuous or tepid depending on whether someone is watching. A whirlpool felt right: it has calm and chaos depending on the angle. It represents the "calm dread" of watching time flow around you, pushing you through deadlines, life events, and birthdays like some sort of demonic lazy river.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="insight-card"><h4>Sensor</h4><p>Motion detector — detects the presence and proximity of an observer.</p></div>
+        <div class="insight-card"><h4>Moving Part</h4><p>Magnetic stirrer motor — creates a whirlpool in the water vessel above.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTOTYPING -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Prototyping</span><hr></div>
+    <div class="two-col" style="margin-bottom:32px;">
+      <div class="img-ph" style="aspect-ratio:4/3;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><path d="M20 20c0-2.21 1.79-4 4-4s4 1.79 4 4c0 3-4 5-4 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="36" r="1.5" fill="currentColor"/></svg>
+        Prototype build photos
+      </div>
+      <div>
+        <p class="cs-h3">How it was built</p>
+        <p class="cs-p">After exploring ripples, waves, and jets, the whirlpool proved most compelling. A magnetic chemistry stirrer from Amazon ($20) was disassembled — inside was a motorised magnet that creates a rotating field. A magnetic pill (stirrer bar) inside the water vessel spins to match it, creating the whirlpool effect.</p>
+        <p class="cs-p">The housing was modelled quickly in Fusion 360 — rough but functional — and rendered in Blender for presentation. The Arduino motion sensor adjusts the stirrer speed in response to proximity, making the water behave differently when observed versus ignored.</p>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Fusion 360 model
+      </div>
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="2"/><path d="M14 40c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Blender render
+      </div>
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M12 36c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="18" r="6" stroke="currentColor" stroke-width="2"/></svg>
+        Working prototype in context
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Outcome</span><hr></div>
+    <div class="two-col">
+      <div class="img-ph" style="aspect-ratio:4/3;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M8 36l10-14 8 8 6-8 8 14H8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        Final piece — in situ photography
+      </div>
+      <div>
+        <p class="cs-h3-italic">What it taught me</p>
+        <p class="cs-p">Flow proved that a short timeline is no excuse for a weak concept. By committing early to a strong idea with real emotional resonance, the three weeks felt purposeful rather than rushed.</p>
+        <p class="cs-p">The project also deepened my understanding of interaction — how a physical object can feel responsive and alive without a screen or interface. The water's behaviour communicates everything.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Next project</p>
+    <a class="next-proj" href="matchbox.html">
+      <div>
+        <div class="next-proj-label">Project 04</div>
+        <div class="next-proj-name">Matchbox — Jewellery Studio.</div>
+      </div>
+      <div class="next-proj-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matchbox — Reuben Sims</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.cs-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
+.cs-hero {
+  min-height: 92vh; display: flex; align-items: flex-end;
+  padding: 0 52px 64px; position: relative; overflow: hidden;
+  background: linear-gradient(140deg, #120e08 0%, #1e1408 100%);
+}
+.cs-hero-bg-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(100px, 16vw, 220px);
+  font-weight: 400; color: rgba(255,255,255,0.03);
+  white-space: nowrap; pointer-events: none; user-select: none;
+  letter-spacing: -0.04em;
+}
+.cs-hero-content { position: relative; max-width: 640px; }
+.cs-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.cs-proj-label::before { content: ''; width: 28px; height: 1.5px; background: var(--orange); }
+.cs-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(52px, 7vw, 88px); line-height: 1; color: rgba(232,233,240,0.95); margin-bottom: 8px; }
+.cs-hero h1 em { font-style: italic; color: var(--orange); }
+.cs-hero-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px; }
+.cs-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(232,233,240,0.4); }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 24px 52px; transition: color 0.2s; }
+.back-link:hover { color: var(--orange); }
+.cs-overview { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 72px; }
+.cs-overview-cell { background: var(--card); padding: 24px 28px; }
+.cs-overview-cell-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.cs-overview-cell-val { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.5; }
+.cs-section { margin-bottom: 80px; }
+.cs-section-rule { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.cs-section-rule span { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+.cs-section-rule hr { flex: 1; border: none; border-top: 1.5px solid rgba(240,78,19,0.4); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.img-ph { border-radius: 12px; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--muted); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; padding: 20px; }
+.img-ph svg { opacity: 0.3; }
+.img-ph.wide { aspect-ratio: 16/9; }
+.img-ph.sq { aspect-ratio: 1; }
+.img-ph.tall { aspect-ratio: 3/4; }
+.insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+.insight-card h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.insight-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
+.cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+.cs-h3-italic { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
+.dark-callout { background: var(--dark); border-radius: 14px; padding: 36px 40px; }
+.dark-callout p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
+.dark-callout p em { color: var(--orange); font-style: normal; }
+.back-to-projects { display: flex; align-items: center; justify-content: space-between; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 36px; text-decoration: none; color: inherit; transition: transform 0.25s, box-shadow 0.25s; }
+.back-to-projects:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(40,40,80,0.1); }
+.back-to-projects-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+.back-to-projects-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.process-steps { display: flex; flex-direction: column; }
+.process-step { display: flex; gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.process-step:last-child { border-bottom: none; }
+.process-step-num { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 32px; color: var(--orange); line-height: 1; min-width: 40px; margin-top: 2px; }
+.process-step-body h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+.process-step-body p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+@media (max-width: 860px) { .cs-wrap { padding: 0 24px 80px; } .cs-hero { padding: 0 24px 48px; } .back-link { padding: 20px 24px; } .cs-overview { grid-template-columns: 1fr 1fr; } .two-col { grid-template-columns: 1fr; } .three-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Reuben Sims</a>
+  <ul class="nav-links">
+    <li><a href="index.html#cv">CV</a></li>
+    <li><a href="index.html#projects" class="active">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-bg-text">MATCHBOX</div>
+  <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
+    <div class="cs-proj-label">Project 04</div>
+    <h1>Match<em>b</em>ox</h1>
+    <p class="cs-hero-tagline">Jewellery Studio.</p>
+    <div class="cs-hero-meta">
+      <span>2026 – ongoing</span>
+      <span>Solo studio</span>
+      <span>Silversmithing &amp; commissions</span>
+    </div>
+  </div>
+</div>
+
+<a class="back-link" href="index.html">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Back to projects
+</a>
+
+<div class="cs-wrap">
+
+  <div class="cs-overview reveal">
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Discipline</div><div class="cs-overview-cell-val">Silversmithing<br>Fabrication</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Timeline</div><div class="cs-overview-cell-val">2026 – ongoing<br>Solo studio</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Tools</div><div class="cs-overview-cell-val">Hand tools<br>Torch, Press, Files</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Output</div><div class="cs-overview-cell-val">Commission pieces<br>Instagram studio</div></div>
+  </div>
+
+  <!-- WHAT IS IT -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>The Studio</span><hr></div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3">A one-person studio run purely on passion.</p>
+        <p class="cs-p">Matchbox is a small jewellery studio — by Reuben, for people who want something made by hand with intention. It started on Instagram as a way to make unique artifacts beyond the constraints of university briefs, and grew into a commission-based practice.</p>
+        <p class="cs-p">Each piece is handmade in silversmithing — fabricated, filed, formed, and finished by hand. No casting from a mould. Every piece is negotiated with the client, scoped carefully, and made to last.</p>
+      </div>
+      <div class="dark-callout">
+        <p>Making things is how I <em>think.</em> Matchbox is where I go when I want to make something with no brief, no deadline, and no compromise.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Process</span><hr></div>
+    <div class="process-steps" style="margin-bottom:40px;">
+      <div class="process-step">
+        <div class="process-step-num">1</div>
+        <div class="process-step-body">
+          <h4>Consultation &amp; Scoping</h4>
+          <p>Every commission starts with a conversation. Understanding what the client wants, what they value, what the piece needs to mean — this is design thinking applied to something small and personal.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">2</div>
+        <div class="process-step-body">
+          <h4>Sketching &amp; Planning</h4>
+          <p>Rough sketches establish form before touching metal. Material selection — silver weight, gauge, finishing method — is decided at this stage based on the brief and budget.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">3</div>
+        <div class="process-step-body">
+          <h4>Fabrication</h4>
+          <p>Sheet silver is cut, shaped, soldered, and refined by hand using traditional silversmithing tools. Each join is carefully made and cleaned. No shortcuts — the work shows.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">4</div>
+        <div class="process-step-body">
+          <h4>Finishing</h4>
+          <p>Filing, sanding, polishing — the finish is everything in jewellery. Whether mirror-bright or matte brushed, the final surface reflects the character of the piece and the taste of the wearer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="img-ph sq">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/><path d="M24 10v4M24 34v4M10 24h4M34 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Finished piece photography
+      </div>
+      <div class="img-ph sq">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M14 34l4-8 6 6 4-10 6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        In-progress fabrication
+      </div>
+      <div class="img-ph sq">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 16V12a8 8 0 0116 0v4" stroke="currentColor" stroke-width="2"/></svg>
+        Commission range / flat lay
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT IT MEANS -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>What it means</span><hr></div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3-italic">Design beyond the brief</p>
+        <p class="cs-p">Matchbox is where theory becomes practice in the most direct sense. Every skill used in industrial design — material understanding, form, function, user research, negotiation, scoping — gets exercised at a small, personal scale.</p>
+        <p class="cs-p">Running a studio also develops business literacy: pricing work fairly, managing client expectations, delivering on time, and building a reputation through quality.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="insight-card"><h4>Skills practiced</h4><p>Silversmithing, fabrication, client consultation, pricing, Instagram content, web presence.</p></div>
+        <div class="insight-card"><h4>What it proves</h4><p>That making things with your hands and running a business are both design problems — and I'm interested in both.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK TO PROJECTS -->
+  <div class="reveal">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">View all projects</p>
+    <a class="back-to-projects" href="index.html#projects">
+      <div>
+        <div class="back-to-projects-label">Portfolio</div>
+        <div class="back-to-projects-name">Back to all projects.</div>
+      </div>
+      <div style="font-size:32px;color:var(--orange);">↑</div>
+    </a>
+  </div>
+
+</div>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

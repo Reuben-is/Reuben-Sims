@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCOPE — Reuben Sims</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="esper.html" disabled>
+<style>
+.cs-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
+.cs-hero {
+  min-height: 92vh; display: flex; align-items: flex-end;
+  padding: 0 52px 64px; position: relative; overflow: hidden;
+  background: linear-gradient(140deg, #101820 0%, #0a1822 100%);
+}
+.cs-hero-bg-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(140px, 22vw, 300px);
+  font-weight: 400; color: rgba(255,255,255,0.03);
+  white-space: nowrap; pointer-events: none; user-select: none;
+  letter-spacing: -0.04em;
+}
+.cs-hero-content { position: relative; max-width: 640px; }
+.cs-proj-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cs-proj-label::before { content: ''; width: 28px; height: 1.5px; background: var(--orange); }
+.cs-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(52px, 7vw, 88px); line-height: 1;
+  color: rgba(232,233,240,0.95); margin-bottom: 8px;
+}
+.cs-hero h1 em { font-style: italic; color: var(--orange); }
+.cs-hero-tagline {
+  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px;
+}
+.cs-hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(232,233,240,0.4);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mid);
+  text-decoration: none; padding: 24px 52px; transition: color 0.2s;
+}
+.back-link:hover { color: var(--orange); }
+.cs-overview {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; margin-bottom: 72px;
+}
+.cs-overview-cell { background: var(--card); padding: 24px 28px; }
+.cs-overview-cell-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.cs-overview-cell-val { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.5; }
+.cs-section { margin-bottom: 80px; }
+.cs-section-rule { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.cs-section-rule span { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+.cs-section-rule hr { flex: 1; border: none; border-top: 1.5px solid rgba(240,78,19,0.4); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.img-ph {
+  border-radius: 12px; background: var(--card); border: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; color: var(--muted); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; text-align: center; padding: 20px;
+}
+.img-ph svg { opacity: 0.3; }
+.img-ph.wide { aspect-ratio: 16/9; }
+.img-ph.sq { aspect-ratio: 1; }
+.stat-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: center; }
+.stat-box-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--orange); line-height: 1; }
+.stat-box-label { font-size: 12px; font-weight: 500; color: var(--mid); margin-top: 6px; line-height: 1.4; }
+.insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+.insight-card h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.insight-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
+.cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+.cs-h3-italic { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
+.dark-callout { background: var(--dark); border-radius: 14px; padding: 36px 40px; }
+.dark-callout p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
+.dark-callout p em { color: var(--orange); font-style: normal; }
+.team-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.team-chip { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 500; color: var(--dark); }
+.team-chip span { font-size: 11px; color: var(--mid); display: block; font-weight: 400; }
+.next-proj {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px 36px;
+  text-decoration: none; color: inherit; transition: transform 0.25s, box-shadow 0.25s;
+}
+.next-proj:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(40,40,80,0.1); }
+.next-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+.next-proj-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.next-proj-arrow { font-size: 32px; color: var(--orange); }
+@media (max-width: 860px) {
+  .cs-wrap { padding: 0 24px 80px; }
+  .cs-hero { padding: 0 24px 48px; }
+  .back-link { padding: 20px 24px; }
+  .cs-overview { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Reuben Sims</a>
+  <ul class="nav-links">
+    <li><a href="index.html#cv">CV</a></li>
+    <li><a href="index.html#projects" class="active">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-bg-text">SCOPE</div>
+  <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
+    <div class="cs-proj-label">Project 02</div>
+    <h1>SC<em>O</em>PE</h1>
+    <p class="cs-hero-tagline">Optical Relief Bot.</p>
+    <div class="cs-hero-meta">
+      <span>12-week timeline</span>
+      <span>Group project</span>
+      <span>Second year</span>
+    </div>
+  </div>
+</div>
+
+<a class="back-link" href="index.html">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Back to projects
+</a>
+
+<div class="cs-wrap">
+
+  <div class="cs-overview reveal">
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Discipline</div><div class="cs-overview-cell-val">Product Design<br>UI / Systems</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Timeline</div><div class="cs-overview-cell-val">12 weeks<br>Second year</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Tools</div><div class="cs-overview-cell-val">Fusion 360, Keyshot<br>Figma, Miro</div></div>
+    <div class="cs-overview-cell"><div class="cs-overview-cell-label">Methods</div><div class="cs-overview-cell-val">Ethnography<br>Group Collaboration</div></div>
+  </div>
+
+  <!-- BRIEF -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>The Problem</span><hr></div>
+    <div class="three-col" style="margin-bottom:40px;">
+      <div class="stat-box"><div class="stat-box-num">15%</div><div class="stat-box-label">of the global population affected by dry eye</div></div>
+      <div class="stat-box"><div class="stat-box-num">70%</div><div class="stat-box-label">prefer reusable products over disposables</div></div>
+      <div class="stat-box"><div class="stat-box-num" style="font-size:28px;">Most</div><div class="stat-box-label">eye care products are inconvenient in routine use</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3">Problem Statement</p>
+        <p class="cs-p">Dry eye affects a huge portion of the population, yet the products designed to treat it are largely inconvenient, disposable, and fragmented. The goal was to design a single, portable system that consolidated multiple care solutions in one intuitive device — hands-free, customisable, and easy to use daily.</p>
+      </div>
+      <div class="insight-card" style="align-self:start;">
+        <h4>Design Targets</h4>
+        <p>Portability · Ease of use · Hands-free operation · Customisability · Reusability over disposables</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>The Concept</span><hr></div>
+    <div class="two-col" style="margin-bottom:32px;">
+      <div class="img-ph" style="aspect-ratio:1;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/></svg>
+        SCOPE product hero render
+      </div>
+      <div>
+        <p class="cs-h3-italic">One station. Three devices.</p>
+        <p class="cs-p">SCOPE acts as a wireless charging station for three separate eye care devices: a heated eye massager (SCOPE-A), a humidifier and eye drop spray (SCOPE-H), and a detachable sleeping mask stored in its backpack compartment.</p>
+        <p class="cs-p">Magnetic wireless charging slots make it effortless to dock and undock each device. The system is designed to live on a desk or bedside table — present enough to be used, unobtrusive enough not to be annoying.</p>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="insight-card"><h4>SCOPE-A</h4><p>Heated eye massager — detachable arms provide targeted warmth and relief.</p></div>
+      <div class="insight-card"><h4>SCOPE-H</h4><p>Humidifier + eye drop spray — a removable heart module for moisture delivery.</p></div>
+      <div class="insight-card"><h4>Sleep Mask</h4><p>Stored in SCOPE's backpack compartment, ready to deploy at night.</p></div>
+    </div>
+  </div>
+
+  <!-- SMART SYSTEM -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Smart System</span><hr></div>
+    <div class="two-col">
+      <div>
+        <p class="cs-h3">Accompanied by a smartbot</p>
+        <p class="cs-p">SCOPE's screen displays weather, battery charge for each device, and blinks steadily to remind the user to take a screen break. The bot system turns a passive charging station into an active health companion.</p>
+      </div>
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="10" y="14" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 34v4M32 34v4M13 38h22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        UI screen mockup
+      </div>
+    </div>
+  </div>
+
+  <!-- DEVELOPMENT -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Development</span><hr></div>
+    <div class="three-col" style="margin-bottom:32px;">
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        CAD development views
+      </div>
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M16 16V12a8 8 0 0116 0v4" stroke="currentColor" stroke-width="2"/></svg>
+        Form exploration renders
+      </div>
+      <div class="img-ph wide">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><path d="M24 16v8l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Prototype photos
+      </div>
+    </div>
+  </div>
+
+  <!-- REFLECTION -->
+  <div class="cs-section reveal">
+    <div class="cs-section-rule"><span>Reflection</span><hr></div>
+    <div class="dark-callout" style="margin-bottom:32px;">
+      <p>This project taught me so much about the designer I want to be. Working in a strong team meant <em>constant learning</em> — everyone had something to bring to the table.</p>
+    </div>
+    <p class="cs-p">I faced real challenges — managing ego, developing CAD skills under pressure, and improving social dynamics in a fast-moving team. Coming out the other side, I was a stronger team player and a better listener. Huge thanks to tutor Ian Wong and teammates Angela, Jessica, Liming, Timothy, and Triman.</p>
+
+    <div class="team-grid" style="margin-top:28px;">
+      <div class="team-chip">Ian Wong <span>Tutor</span></div>
+      <div class="team-chip">Angela</div>
+      <div class="team-chip">Jessica</div>
+      <div class="team-chip">Liming Huang</div>
+      <div class="team-chip">Timothy Tran</div>
+      <div class="team-chip">Triman Sarai</div>
+      <div class="team-chip">Reuben Sims</div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Next project</p>
+    <a class="next-proj" href="flow.html">
+      <div>
+        <div class="next-proj-label">Project 03</div>
+        <div class="next-proj-name">Flow — Whirlpool Lamp.</div>
+      </div>
+      <div class="next-proj-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
