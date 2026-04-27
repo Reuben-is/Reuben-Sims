@@ -15,7 +15,7 @@
 .cs-hero-bg-text {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Space Mono', monospace;
   font-size: clamp(160px, 24vw, 320px);
   font-weight: 400; color: rgba(255,255,255,0.03);
   white-space: nowrap; pointer-events: none; user-select: none;
@@ -24,9 +24,9 @@
 .cs-hero-content { position: relative; max-width: 640px; }
 .cs-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .cs-proj-label::before { content: ''; width: 28px; height: 1.5px; background: var(--orange); }
-.cs-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(52px, 7vw, 88px); line-height: 1; color: rgba(232,233,240,0.95); margin-bottom: 8px; }
+.cs-hero h1 { font-family: 'Space Mono', monospace; font-size: clamp(52px, 7vw, 88px); line-height: 1; letter-spacing: -0.03em; color: rgba(232,233,240,0.95); margin-bottom: 8px; }
 .cs-hero h1 em { font-style: italic; color: var(--orange); }
-.cs-hero-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px; }
+.cs-hero-tagline { font-family: 'Space Mono', monospace; font-style: italic; font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px; }
 .cs-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(232,233,240,0.4); }
 .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 24px 52px; transition: color 0.2s; }
 .back-link:hover { color: var(--orange); }
@@ -45,21 +45,21 @@
 .img-ph.wide { aspect-ratio: 16/9; }
 .img-ph.sq { aspect-ratio: 1; }
 .cs-quote { border-left: 3px solid var(--orange); padding: 12px 24px; margin: 8px 0; }
-.cs-quote p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--dark); line-height: 1.45; }
+.cs-quote p { font-family: 'Space Mono', monospace; font-style: italic; font-size: 22px; color: var(--dark); line-height: 1.45; }
 .cs-quote cite { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); font-style: normal; margin-top: 10px; display: block; }
 .insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
 .insight-card h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
 .insight-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
 .cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
 .cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
-.cs-h3-italic { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
+.cs-h3-italic { font-family: 'Space Mono', monospace; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
 .dark-callout { background: var(--dark); border-radius: 14px; padding: 36px 40px; }
-.dark-callout p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
+.dark-callout p { font-family: 'Space Mono', monospace; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
 .dark-callout p em { color: var(--orange); font-style: normal; }
 .next-proj { display: flex; align-items: center; justify-content: space-between; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 36px; text-decoration: none; color: inherit; transition: transform 0.25s, box-shadow 0.25s; }
 .next-proj:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(40,40,80,0.1); }
 .next-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
-.next-proj-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.next-proj-name { font-family: 'Space Mono', monospace; font-style: italic; font-size: 28px; color: var(--dark); }
 .next-proj-arrow { font-size: 32px; color: var(--orange); }
 @media (max-width: 860px) { .cs-wrap { padding: 0 24px 80px; } .cs-hero { padding: 0 24px 48px; } .back-link { padding: 20px 24px; } .cs-overview { grid-template-columns: 1fr 1fr; } .two-col { grid-template-columns: 1fr; } .three-col { grid-template-columns: 1fr; } }
 </style>
@@ -81,7 +81,7 @@
   <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
     <div class="cs-proj-label">Project 03</div>
     <h1>Fl<em>o</em>w</h1>
-    <p class="cs-hero-tagline">Whirlpool lamp.</p>
+    <p class="cs-hero-tagline" style="letter-spacing: 0.02em;">Whirlpool lamp.</p>
     <div class="cs-hero-meta">
       <span>3-week timeline</span>
       <span>Arduino prototype</span>
