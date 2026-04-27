@@ -18,7 +18,7 @@
 .cs-hero-bg-text {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Space Mono', monospace;
   font-size: clamp(180px, 25vw, 340px);
   font-weight: 400; color: rgba(255,255,255,0.03);
   white-space: nowrap; pointer-events: none; user-select: none;
@@ -34,13 +34,13 @@
   content: ''; width: 28px; height: 1.5px; background: var(--orange);
 }
 .cs-hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(52px, 7vw, 88px); line-height: 1;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(52px, 7vw, 88px); line-height: 1; letter-spacing: -0.03em;
   color: rgba(232,233,240,0.95); margin-bottom: 8px;
 }
 .cs-hero h1 em { font-style: italic; color: var(--orange); }
 .cs-hero-tagline {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 24px; color: rgba(232,233,240,0.5);
   margin-bottom: 24px;
 }
@@ -114,7 +114,7 @@
   margin: 8px 0;
 }
 .cs-quote p {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 22px; color: var(--dark); line-height: 1.45;
 }
 .cs-quote cite {
@@ -129,7 +129,7 @@
   border-radius: 12px; padding: 24px 28px; text-align: center;
 }
 .stat-box-num {
-  font-family: 'DM Serif Display', serif; font-size: 48px;
+  font-family: 'Space Mono', monospace; font-size: 48px;
   color: var(--orange); line-height: 1;
 }
 .stat-box-label {
@@ -145,7 +145,7 @@
 }
 .process-step:last-child { border-bottom: none; }
 .process-step-num {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 32px; color: var(--orange); line-height: 1;
   min-width: 40px; margin-top: 2px;
 }
@@ -167,7 +167,7 @@
 .cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
 .cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
 .cs-h3-italic {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 22px; color: var(--mid); margin-bottom: 10px;
 }
 
@@ -177,7 +177,7 @@
   padding: 36px 40px;
 }
 .dark-callout p {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6;
 }
 .dark-callout p em { color: var(--orange); font-style: normal; }
@@ -204,7 +204,7 @@
   font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
 }
-.next-proj-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.next-proj-name { font-family: 'Space Mono', monospace; font-style: italic; font-size: 28px; color: var(--dark); }
 .next-proj-arrow {
   font-size: 32px; color: var(--orange); line-height: 1;
 }
@@ -237,7 +237,7 @@
   <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
     <div class="cs-proj-label">Project 01</div>
     <h1>ESP<em>E</em>R</h1>
-    <p class="cs-hero-tagline">ADHD Assistant.</p>
+    <p class="cs-hero-tagline" style="letter-spacing: 0.02em;">ADHD Assistant.</p>
     <div class="cs-hero-meta">
       <span>12-week timeline</span>
       <span>Arduino prototype</span>
