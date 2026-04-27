@@ -11,7 +11,7 @@
 .cs-hero {
   min-height: 92vh; display: flex; align-items: flex-end;
   padding: 0 52px 64px; position: relative; overflow: hidden;
-  background: linear-gradient(140deg, #101820 0%, #0a1822 100%);
+  background: linear-gradient(140deg, #101820 0%, #0a1822 100%); background-image: url("images/scope-hero.jpg"); background-size: cover; background-position: center;
 }
 .cs-hero-bg-text {
   position: absolute; top: 50%; left: 50%;
@@ -123,8 +123,11 @@
 </nav>
 
 <div class="cs-hero">
+  <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:0;">
+    <source src="images/scope-hero.mp4" type="video/mp4">
+  </video>
   <div class="cs-hero-bg-text">SCOPE</div>
-  <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
+  <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both; position:relative; z-index:1;">
     <div class="cs-proj-label">Project 02</div>
     <h1>SC<em>O</em>PE</h1>
     <p class="cs-hero-tagline" style="letter-spacing: 0.02em;">Optical Relief Bot.</p>
@@ -174,10 +177,7 @@
   <div class="cs-section reveal">
     <div class="cs-section-rule"><span>The Concept</span><hr></div>
     <div class="two-col" style="margin-bottom:32px;">
-      <div class="img-ph" style="aspect-ratio:1;">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/></svg>
-        SCOPE product hero render
-      </div>
+      <img src="images/scope-ecosystem.jpg" alt="SCOPE ecosystem" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;">
       <div>
         <p class="cs-h3-italic">One station. Three devices.</p>
         <p class="cs-p">SCOPE acts as a wireless charging station for three separate eye care devices: a heated eye massager (SCOPE-A), a humidifier and eye drop spray (SCOPE-H), and a detachable sleeping mask stored in its backpack compartment.</p>
@@ -199,10 +199,7 @@
         <p class="cs-h3">Accompanied by a smartbot</p>
         <p class="cs-p">SCOPE's screen displays weather, battery charge for each device, and blinks steadily to remind the user to take a screen break. The bot system turns a passive charging station into an active health companion.</p>
       </div>
-      <div class="img-ph wide">
-        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="10" y="14" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 34v4M32 34v4M13 38h22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        UI screen mockup
-      </div>
+      <img src="images/scope-ui.jpg" alt="SCOPE smartbot UI" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;">
     </div>
   </div>
 
@@ -210,18 +207,9 @@
   <div class="cs-section reveal">
     <div class="cs-section-rule"><span>Development</span><hr></div>
     <div class="three-col" style="margin-bottom:32px;">
-      <div class="img-ph wide">
-        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        CAD development views
-      </div>
-      <div class="img-ph wide">
-        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M16 16V12a8 8 0 0116 0v4" stroke="currentColor" stroke-width="2"/></svg>
-        Form exploration renders
-      </div>
-      <div class="img-ph wide">
-        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/><path d="M24 16v8l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Prototype photos
-      </div>
+      <img src="images/scope-cad.jpg" alt="CAD development" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;">
+      <img src="images/scope-renders.jpg" alt="Form exploration renders" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;">
+      <img src="images/scope-mask.jpg" alt="Sleep mask detail" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;">
     </div>
   </div>
 
@@ -233,7 +221,8 @@
     </div>
     <p class="cs-p">I faced real challenges — managing ego, developing CAD skills under pressure, and improving social dynamics in a fast-moving team. Coming out the other side, I was a stronger team player and a better listener. Huge thanks to tutor Ian Wong and teammates Angela, Jessica, Liming, Timothy, and Triman.</p>
 
-    <div class="team-grid" style="margin-top:28px;">
+    <img src="images/scope-members.jpg" alt="Team members" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <div class="team-grid" style="margin-top:0;">
       <div class="team-chip">Ian Wong <span>Tutor</span></div>
       <div class="team-chip">Angela</div>
       <div class="team-chip">Jessica</div>
