@@ -16,7 +16,7 @@
 .cs-hero-bg-text {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Space Mono', monospace;
   font-size: clamp(140px, 22vw, 300px);
   font-weight: 400; color: rgba(255,255,255,0.03);
   white-space: nowrap; pointer-events: none; user-select: none;
@@ -30,13 +30,13 @@
 }
 .cs-proj-label::before { content: ''; width: 28px; height: 1.5px; background: var(--orange); }
 .cs-hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(52px, 7vw, 88px); line-height: 1;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(52px, 7vw, 88px); line-height: 1; letter-spacing: -0.03em;
   color: rgba(232,233,240,0.95); margin-bottom: 8px;
 }
 .cs-hero h1 em { font-style: italic; color: var(--orange); }
 .cs-hero-tagline {
-  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-family: 'Space Mono', monospace; font-style: italic;
   font-size: 24px; color: rgba(232,233,240,0.5); margin-bottom: 24px;
 }
 .cs-hero-meta {
@@ -76,16 +76,16 @@
 .img-ph.wide { aspect-ratio: 16/9; }
 .img-ph.sq { aspect-ratio: 1; }
 .stat-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: center; }
-.stat-box-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--orange); line-height: 1; }
+.stat-box-num { font-family: 'Space Mono', monospace; font-size: 48px; color: var(--orange); line-height: 1; }
 .stat-box-label { font-size: 12px; font-weight: 500; color: var(--mid); margin-top: 6px; line-height: 1.4; }
 .insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
 .insight-card h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
 .insight-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
 .cs-p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
 .cs-h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
-.cs-h3-italic { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
+.cs-h3-italic { font-family: 'Space Mono', monospace; font-style: italic; font-size: 22px; color: var(--mid); margin-bottom: 10px; }
 .dark-callout { background: var(--dark); border-radius: 14px; padding: 36px 40px; }
-.dark-callout p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
+.dark-callout p { font-family: 'Space Mono', monospace; font-style: italic; font-size: 20px; color: rgba(232,233,240,0.8); line-height: 1.6; }
 .dark-callout p em { color: var(--orange); font-style: normal; }
 .team-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 .team-chip { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 500; color: var(--dark); }
@@ -98,7 +98,7 @@
 }
 .next-proj:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(40,40,80,0.1); }
 .next-proj-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
-.next-proj-name { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--dark); }
+.next-proj-name { font-family: 'Space Mono', monospace; font-style: italic; font-size: 28px; color: var(--dark); }
 .next-proj-arrow { font-size: 32px; color: var(--orange); }
 @media (max-width: 860px) {
   .cs-wrap { padding: 0 24px 80px; }
@@ -127,7 +127,7 @@
   <div class="cs-hero-content" style="animation: fadeUp 0.7s ease 0.1s both;">
     <div class="cs-proj-label">Project 02</div>
     <h1>SC<em>O</em>PE</h1>
-    <p class="cs-hero-tagline">Optical Relief Bot.</p>
+    <p class="cs-hero-tagline" style="letter-spacing: 0.02em;">Optical Relief Bot.</p>
     <div class="cs-hero-meta">
       <span>12-week timeline</span>
       <span>Group project</span>
