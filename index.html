@@ -80,55 +80,65 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
 }
 .cv-philosophy p em { color: var(--orange); font-style: normal; }
 
-/* PROJECTS INDEX GRID */
-.proj-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
-}
+/* PROJECTS — EDITORIAL LAYOUT */
+.proj-grid { display: flex; flex-direction: column; gap: 16px; }
 .proj-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden;
   text-decoration: none; color: inherit;
-  display: block; transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: block; border-radius: 16px; overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.proj-card:hover { transform: translateY(-6px); box-shadow: 0 18px 52px rgba(40,40,80,0.11); }
-.proj-card-thumb {
-  position: relative; width: 100%; aspect-ratio: 16/9;
-  overflow: hidden; display: flex; align-items: center; justify-content: center;
+.proj-card:hover { transform: translateY(-4px); box-shadow: 0 20px 56px rgba(20,20,40,0.18); }
+.proj-card-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(20%); transition: filter 0.5s ease, transform 0.5s ease;
 }
-.proj-card-thumb-bg {
+.proj-card:hover .proj-card-img { filter: grayscale(0%); transform: scale(1.02); }
+.proj-card-overlay {
   position: absolute; inset: 0;
-  filter: grayscale(100%); transition: filter 0.4s ease;
-  background-size: cover; background-position: center;
+  background: linear-gradient(to top, rgba(10,10,18,0.88) 0%, rgba(10,10,18,0.1) 55%, transparent 100%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 32px 36px;
 }
-.proj-card:hover .proj-card-thumb-bg { filter: grayscale(0%); }
-.thumb-esper   { background: linear-gradient(140deg,#0e0e0e,#2a2a2a); }
-.thumb-scope   { background: linear-gradient(140deg,#181f28,#2a3540); }
-.thumb-flow    { background: linear-gradient(140deg,#1a1520,#282030); }
-.thumb-matchbox{ background: linear-gradient(140deg,#1c1510,#2a2010); }
 .proj-num {
-  position: absolute; bottom: 16px; left: 20px;
-  font-family: 'Space Mono', monospace;
-  font-style: italic; font-size: 52px; color: var(--orange);
-  line-height: 1; text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  pointer-events: none;
+  font-family: 'Space Mono', monospace; font-style: italic;
+  font-size: 12px; color: var(--orange);
+  letter-spacing: 0.12em; margin-bottom: 8px; display: block;
 }
-.proj-card-body { padding: 22px 24px 24px; }
-.proj-card-name { font-size: 22px; font-weight: 700; color: var(--dark); }
+.proj-card-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px; font-weight: 700;
+  color: rgba(232,233,240,0.95); line-height: 1; margin-bottom: 4px;
+}
 .proj-card-tagline {
-  font-family: 'Space Mono', monospace;
-  font-style: italic; font-size: 15px; color: var(--mid);
-  margin: 2px 0 12px;
+  font-family: 'Space Mono', monospace; font-style: italic;
+  font-size: 13px; color: rgba(232,233,240,0.5); margin-bottom: 14px;
 }
-.proj-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
-.proj-card-meta { font-size: 12px; color: var(--muted); padding-top: 10px; border-top: 1px solid var(--border); }
+.proj-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.proj-card-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(232,233,240,0.5);
+  border: 1px solid rgba(232,233,240,0.18); border-radius: 4px; padding: 3px 9px;
+}
 .proj-arrow {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--orange);
-  margin-top: 12px;
+  position: absolute; top: 24px; right: 28px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(240,78,19,0.15); border: 1px solid rgba(240,78,19,0.4);
+  display: flex; align-items: center; justify-content: center; color: var(--orange);
+  opacity: 0; transition: opacity 0.25s, transform 0.25s; transform: translateY(6px);
 }
-.proj-arrow svg { transition: transform 0.2s; }
-.proj-card:hover .proj-arrow svg { transform: translateX(4px); }
+.proj-card:hover .proj-arrow { opacity: 1; transform: translateY(0); }
+.proj-card-hero { height: 520px; }
+.proj-row-mid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+.proj-card-mid { height: 380px; }
+.proj-card-wide { height: 300px; }
+.proj-card-wide .proj-card-overlay {
+  background: linear-gradient(to right, rgba(10,10,18,0.9) 0%, rgba(10,10,18,0.3) 60%, transparent 100%);
+  justify-content: center; padding: 40px 48px;
+}
+.proj-card-wide .proj-card-name { font-size: 40px; }
+.thumb-flow    { background: linear-gradient(140deg,#1a1520,#282030); width:100%; height:100%; display:block; }
+.thumb-matchbox{ background: linear-gradient(140deg,#1c1510,#2a2010); width:100%; height:100%; display:block; }
 
 /* SKILLS */
 .skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
@@ -181,7 +191,12 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
   #hero { padding: 90px 24px 60px; }
   .hero-card { flex-direction: column; padding: 32px 28px; }
   .cv-grid { grid-template-columns: 1fr; }
-  .proj-grid { grid-template-columns: 1fr; }
+  .proj-card-hero { height: 340px; }
+  .proj-row-mid { grid-template-columns: 1fr; }
+  .proj-card-mid { height: 300px; }
+  .proj-card-wide { height: 260px; }
+  .proj-card-wide .proj-card-overlay { background: linear-gradient(to top, rgba(10,10,18,0.88) 0%, rgba(10,10,18,0.1) 55%, transparent 100%); justify-content: flex-end; padding: 28px; }
+  .proj-card-wide .proj-card-name { font-size: 28px; }
   .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
   .contact-card { flex-direction: column; padding: 40px 32px; gap: 36px; }
 }
@@ -268,74 +283,72 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
   </div>
 
   <div class="proj-grid">
-    <a class="proj-card reveal reveal-d1" href="esper.html">
-      <div class="proj-card-thumb">
-        <div class="proj-card-thumb-bg thumb-esper"></div>
-        <!-- Replace with: <img src="images/esper-thumb.jpg" style="..."> -->
-        <div class="proj-num">01</div>
-      </div>
-      <div class="proj-card-body">
+
+    <!-- ESPER — hero full width -->
+    <a class="proj-card proj-card-hero reveal" href="esper.html">
+      <img class="proj-card-img" src="images/esper-hero.jpg" alt="ESPER">
+      <div class="proj-card-overlay">
+        <span class="proj-num">Project 01</span>
         <div class="proj-card-name">ESPER</div>
         <div class="proj-card-tagline">ADHD Assistant.</div>
         <div class="proj-card-tags">
-          <span class="tag">Ethnography</span><span class="tag">CAD</span>
-          <span class="tag">Electronics</span><span class="tag">Prototyping</span>
+          <span class="proj-card-tag">Ethnography</span>
+          <span class="proj-card-tag">CAD</span>
+          <span class="proj-card-tag">Electronics</span>
+          <span class="proj-card-tag">Prototyping</span>
         </div>
-        <div class="proj-card-meta">Monash 'MADA NOW' entry · 12-week timeline</div>
-        <div class="proj-arrow">View case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
+      <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </a>
 
-    <a class="proj-card reveal reveal-d2" href="scope.html">
-      <div class="proj-card-thumb">
-        <div class="proj-card-thumb-bg thumb-scope"></div>
-        <div class="proj-num">02</div>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-card-name">SCOPE</div>
-        <div class="proj-card-tagline">Dry Eye Solution.</div>
-        <div class="proj-card-tags">
-          <span class="tag">Ethnography</span><span class="tag">CAD</span>
-          <span class="tag">Collaboration</span><span class="tag">Presentation</span>
+    <!-- SCOPE + FLOW — side by side -->
+    <div class="proj-row-mid reveal">
+      <a class="proj-card proj-card-mid" href="scope.html">
+        <img class="proj-card-img" src="images/scope-hero.jpg" alt="SCOPE">
+        <div class="proj-card-overlay">
+          <span class="proj-num">Project 02</span>
+          <div class="proj-card-name">SCOPE</div>
+          <div class="proj-card-tagline">Dry Eye Solution.</div>
+          <div class="proj-card-tags">
+            <span class="proj-card-tag">Ethnography</span>
+            <span class="proj-card-tag">CAD</span>
+            <span class="proj-card-tag">Collaboration</span>
+          </div>
         </div>
-        <div class="proj-card-meta">Second year group project · 12-week timeline</div>
-        <div class="proj-arrow">View case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-    </a>
-
-    <a class="proj-card reveal reveal-d3" href="flow.html">
-      <div class="proj-card-thumb">
-        <div class="proj-card-thumb-bg thumb-flow"></div>
-        <div class="proj-num">03</div>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-card-name">Flow</div>
-        <div class="proj-card-tagline">Whirlpool Lamp.</div>
-        <div class="proj-card-tags">
-          <span class="tag">Prototyping</span><span class="tag">Electronics</span>
-          <span class="tag">CAD</span><span class="tag">Coding</span>
+        <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+      <a class="proj-card proj-card-mid" href="flow.html">
+        <div class="thumb-flow"></div>
+        <div class="proj-card-overlay">
+          <span class="proj-num">Project 03</span>
+          <div class="proj-card-name">Flow</div>
+          <div class="proj-card-tagline">Whirlpool Lamp.</div>
+          <div class="proj-card-tags">
+            <span class="proj-card-tag">Prototyping</span>
+            <span class="proj-card-tag">Electronics</span>
+            <span class="proj-card-tag">CAD</span>
+          </div>
         </div>
-        <div class="proj-card-meta">Creative Prototyping unit · 3-week timeline</div>
-        <div class="proj-arrow">View case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-    </a>
+        <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+    </div>
 
-    <a class="proj-card reveal reveal-d4" href="matchbox.html">
-      <div class="proj-card-thumb">
-        <div class="proj-card-thumb-bg thumb-matchbox"></div>
-        <div class="proj-num">04</div>
-      </div>
-      <div class="proj-card-body">
+    <!-- MATCHBOX — wide cinematic -->
+    <a class="proj-card proj-card-wide reveal" href="matchbox.html">
+      <div class="thumb-matchbox"></div>
+      <div class="proj-card-overlay">
+        <span class="proj-num">Project 04</span>
         <div class="proj-card-name">Matchbox</div>
         <div class="proj-card-tagline">Jewellery Studio.</div>
         <div class="proj-card-tags">
-          <span class="tag">Silversmithing</span><span class="tag">Metalwork</span>
-          <span class="tag">Fabrication</span><span class="tag">Web Design</span>
+          <span class="proj-card-tag">Silversmithing</span>
+          <span class="proj-card-tag">Metalwork</span>
+          <span class="proj-card-tag">Fabrication</span>
         </div>
-        <div class="proj-card-meta">Passion project · 2026 – ongoing</div>
-        <div class="proj-arrow">View case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
+      <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </a>
+
   </div>
   </div>
 </section>
