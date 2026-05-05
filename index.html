@@ -12,42 +12,74 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
 /* HERO */
 #hero {
   min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding-top: 100px; padding-bottom: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   max-width: none; margin: 0;
-  padding-left: 52px; padding-right: 52px;
+  padding: 0;
+  overflow: hidden;
 }
-.hero-card {
-  display: flex; align-items: center; gap: 48px;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 44px 48px;
-  max-width: 900px; margin: 60px auto 0;
-  animation: fadeUp 0.8s ease 0.25s both;
-}
+/* LEFT — photo panel */
 .hero-photo-wrap {
-  width: 176px; height: 216px; flex-shrink: 0;
-  border-radius: 12px; overflow: hidden;
-  background: linear-gradient(145deg, var(--orange) 0%, #b83800 100%);
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #0e0e12;
+  min-height: 100vh;
 }
-.hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.hero-photo-placeholder {
-  width: 64px; height: 64px; opacity: 0.25;
+.hero-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  filter: grayscale(15%);
 }
+.hero-photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--bg) 100%);
+}
+/* RIGHT — content panel */
+.hero-card {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 64px 80px 48px;
+  animation: fadeUp 0.7s ease 0.2s both;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute; left: 0; top: 15%; bottom: 15%;
+  width: 1px; background: var(--border);
+}
+.hero-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-overline::before { content: ''; width: 24px; height: 1.5px; background: var(--orange); }
 .hero-h1 {
-  font-family: 'Space Mono', monospace;
-  font-size: 54px; line-height: 1.02; color: var(--dark); letter-spacing: -0.02em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1; color: var(--dark);
+  letter-spacing: -0.03em; margin-bottom: 8px;
 }
 .hero-sub {
   font-family: 'Space Mono', monospace;
-  font-style: italic; font-size: 22px; color: var(--mid);
-  margin: 4px 0 18px;
+  font-style: italic; font-size: 18px; color: var(--orange);
+  margin-bottom: 40px; letter-spacing: 0.02em;
 }
-.hero-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+.hero-divider {
+  width: 40px; height: 2px; background: var(--border);
+  margin-bottom: 28px;
 }
-.hero-p { font-size: 14px; color: var(--mid); line-height: 1.75; }
+.hero-p { font-size: 14px; color: var(--mid); line-height: 1.85; margin-bottom: 12px; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 36px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dark);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--orange); padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.hero-cta:hover { color: var(--orange); }
 
 /* CV */
 .cv-grid {
@@ -188,8 +220,11 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
 
 @media (max-width: 900px) {
   section { padding: 72px 24px; }
-  #hero { padding: 90px 24px 60px; }
-  .hero-card { flex-direction: column; padding: 32px 28px; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-photo-wrap { min-height: 50vh; }
+  .hero-card { padding: 48px 28px 60px; }
+  .hero-card::before { display: none; }
+  .hero-h1 { font-size: 44px; }
   .cv-grid { grid-template-columns: 1fr; }
   .proj-card-hero { height: 340px; }
   .proj-row-mid { grid-template-columns: 1fr; }
@@ -216,23 +251,24 @@ section { padding: 96px 52px; max-width: 1280px; margin: 0 auto; }
 
 <!-- ── HERO ─────────────────────────────── -->
 <section id="hero">
-  <div class="sec-rule">
-    <span class="sec-rule-label">HELLO</span>
-    <div class="sec-rule-line"></div>
+  <!-- LEFT: photo -->
+  <div class="hero-photo-wrap">
+    <img src="reuben-hero.jpg" alt="Reuben Sims">
+    <div class="hero-photo-overlay"></div>
   </div>
 
+  <!-- RIGHT: content -->
   <div class="hero-card">
-    <!-- Replace the div below with <img src="your-photo.jpg"> when ready -->
-    <div class="hero-photo-wrap">
-      <img src="reuben-hero.jpg" alt="Reuben Sims" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-    </div>
-    <div>
-      <h1 class="hero-h1">Reuben Sims</h1>
-      <p class="hero-sub">Design</p>
-      <p class="hero-label">A bit about me</p>
-      <p class="hero-p">I'm an Aussie from rural northeast Victoria, where I graduated from Alexandra Secondary College and moved out at 18 to chase my dreams at Monash University, paying my own way. Having reached the end of my degree, I understand I'm still unfinished; however, I'm also excited and eager to enter the industry.</p>
-      <p class="hero-p" style="margin-top:10px;">What I'm looking for is somewhere I can learn and grow. In return, I can offer 100% effort, a willingness to learn, a degree's worth of design thinking, CAD, awesome slide decks, and hey — I can make a barista-quality cup of coffee.</p>
-    </div>
+    <div class="hero-overline">Industrial Designer</div>
+    <h1 class="hero-h1">Reuben<br>Sims</h1>
+    <p class="hero-sub">Design_</p>
+    <div class="hero-divider"></div>
+    <p class="hero-p">Aussie from rural northeast Victoria. Graduated from Monash University in Industrial Design — paying my own way from age 18.</p>
+    <p class="hero-p">I'm looking for somewhere to learn and grow. In return: 100% effort, a degree's worth of design thinking, CAD, great slide decks, and a barista-quality cup of coffee.</p>
+    <a class="hero-cta" href="#projects">
+      View my work
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
   </div>
 </section>
